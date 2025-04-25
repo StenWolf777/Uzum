@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import com.example.demo.Product;
 import com.example.demo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

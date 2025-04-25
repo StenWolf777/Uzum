@@ -1,0 +1,90 @@
+
+### Product qo'shish (POST)
+POST http://localhost:8080/api/product/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+
+{
+  "name": "Laptop",
+  "model": "2023",
+  "price": 999.99,
+  "stock": 10,
+  "description": "High-end laptop",
+  "category": {
+    "id": 1
+  }
+}
+
+###
+
+### ID bo'yicha product olish (GET)
+GET http://localhost:8080/api/product/getById/1
+
+###
+
+### Barcha productlarni olish (GET)
+GET http://localhost:8080/api/product/getAll
+
+###
+
+### Product nomi bo'yicha qidirish (GET)
+GET http://localhost:8080/api/product/getByName/Laptop
+
+###
+
+### Model bo'yicha product qidirish (GET)
+GET http://localhost:8080/api/product/getByModel/2023
+
+###
+
+### Product yangilash (PUT)
+PUT http://localhost:8080/api/product/update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ93...
+
+
+{
+  "name": "Laptop Pro",
+  "model": "2024",
+  "price": 1299.99,
+  "stock": 8,
+  "description": "Upgraded high-end laptop",
+  "category": {
+    "id": 1
+  }
+}
+
+###
+
+### Narxni yangilash (PATCH)
+PATCH http://localhost:8080/api/product/updatePrice/1
+Content-Type: application/json
+Authorization: Bearer <your-jwt-token>
+
+{
+  "price": 1399.99
+}
+
+###
+
+### Product o'chirish (DELETE)
+DELETE http://localhost:8080/api/product/delete/1
+Authorization: Bearer <your-jwt-token>
+
+###
+
+### Narxdan katta productlarni olish (GET)
+GET http://localhost:8080/api/product/getByPriceGreaterThan/500
+
+###
+
+### Narx bo'yicha saralash (ASC) (GET)
+GET http://localhost:8080/api/product/sortByPrice?order=ASC
+
+###
+
+### Narx bo'yicha saralash (DESC) (GET)
+GET http://localhost:8080/api/product/sortByPrice?order=DESC
+
+###

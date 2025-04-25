@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import jakarta.annotation.security.PermitAll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    @PermitAll
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
         logger.info("Registering user: {}", user.getUsername());
@@ -30,6 +32,7 @@ public class AuthController {
         return ResponseEntity.ok("User registered successfully");
     }
 
+    @PermitAll
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         logger.info("Logging in user: {}", loginRequest.getUsername());

@@ -1,6 +1,5 @@
-package Order;
+package com.example.demo;
 
-import com.example.demo.User;
 import jakarta.persistence.*;
 import lombok.Data;
 

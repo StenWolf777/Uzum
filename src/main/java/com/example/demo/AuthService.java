@@ -17,21 +17,20 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
 
     public void registerUser(User user) {
-        logger.debug("Registering user: {}", user.getUsername());
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            throw new RuntimeException("Username already exists: " + user.getUsername());
+        logger.info("Registering user: {}", user.getUsername());
+        if (user.getUsername() == null || user.getUsername().trim().isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be empty");
         }
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already exists: " + user.getEmail());
+        if (user.getPassword() == null || user.getPassword().trim().isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setCreatedAt(java.time.LocalDateTime.now());
         userRepository.save(user);
-        logger.debug("User registered: {}", user.getUsername());
+        logger.info("User saved to database: {}", user.getUsername());
     }
 
     public User findByUsername(String username) {
-        logger.debug("Finding user by username: {}", username);
+        logger.info("Finding user: {}", username);
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
     }

@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import com.example.demo.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

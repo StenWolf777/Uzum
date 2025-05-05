@@ -1,18 +1,24 @@
 package com.example.demo.user;
 
 import com.example.demo.component.BaseMapper;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+// User.java
 @Entity
 @Table(name = "users")
 @Data
 public class User extends BaseMapper {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long UUID ;
+
+    // ❌ Remove this:
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long UUID;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -24,8 +30,9 @@ public class User extends BaseMapper {
     private String email;
 
     @Column(nullable = false)
-    private String role; // USER, ADMIN
+    private String role;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }

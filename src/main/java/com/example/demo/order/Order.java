@@ -1,5 +1,6 @@
 package com.example.demo.order;
 
+import com.example.demo.cart.CartItem;
 import com.example.demo.component.BaseMapper;
 import com.example.demo.user.User;
 import jakarta.persistence.*;
@@ -32,4 +33,7 @@ public class Order extends BaseMapper {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    public Order(Long userId, List<CartItem> cart) {
+    }
 }
